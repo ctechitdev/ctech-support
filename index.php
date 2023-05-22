@@ -23,7 +23,7 @@
                   <div class="card-header pb-0">
                     <div class="app-brand w-100 d-flex justify-content-center border-bottom-0">
                       <a class="w-auto pl-0" href="index.php">
-                        <img src="images/new-sup.png" alt="Mono">
+                        <img src="images/wpp02.jpeg" alt="Mono">
                     
                       </a>
                     </div>
@@ -31,7 +31,7 @@
                   <div class="card-body px-5 pb-5 pt-0">
 				  <br>
 
-                    <h4 class="text-dark mb-6 text-center">KP HELPDESK</h4>
+                    <h4 class="text-dark mb-6 text-center">C-Tech Support</h4>
 					
 					
 
@@ -50,7 +50,7 @@
 
                       
 
-                          <button type="submit" name="btnlogin"  class="btn btn-primary btn-pill mb-4">Sign In</button>
+                          <button type="submit" name="btnlogin"  class="btn btn-dark btn-pill mb-4">Sign In</button>
  
                         </div>
                       </div>

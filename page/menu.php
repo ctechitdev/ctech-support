@@ -3,8 +3,8 @@
     <!-- Aplication Brand -->
     <div class="app-brand">
       <a href="index.php">
-        <img src="../images/support.png" alt="Mono">
-        <span class="brand-name">KP HELPDESK</span>
+        <img src="../images/wpp01.jpg" width="50px"  alt="Mono">
+        <span class="brand-name">-Tech Support</span>
       </a>
     </div>
     <!-- begin sidebar scrollbar -->
