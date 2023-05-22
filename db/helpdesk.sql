@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2023 at 05:26 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Generation Time: May 22, 2023 at 11:47 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,8 +18,26 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `helpdesk`
+-- Database: `ctech_support`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_company`
+--
+
+CREATE TABLE `tbl_company` (
+  `cp_id` int(11) NOT NULL,
+  `cp_name` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_company`
+--
+
+INSERT INTO `tbl_company` (`cp_id`, `cp_name`) VALUES
+(1, 'ctech');
 
 -- --------------------------------------------------------
 
@@ -30,7 +48,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `tbl_depart` (
   `dp_id` int(11) NOT NULL,
   `dp_name` varchar(150) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_depart`
@@ -58,7 +76,7 @@ INSERT INTO `tbl_depart` (`dp_id`, `dp_name`) VALUES
 CREATE TABLE `tbl_header_title` (
   `ht_id` int(11) NOT NULL,
   `ht_name` varchar(300) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_header_title`
@@ -79,15 +97,7 @@ INSERT INTO `tbl_header_title` (`ht_id`, `ht_name`) VALUES
 CREATE TABLE `tbl_issue_category` (
   `isc_id` int(11) NOT NULL,
   `isc_name` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_issue_category`
---
-
-INSERT INTO `tbl_issue_category` (`isc_id`, `isc_name`) VALUES
-(1, 'ບັນຫາຄອມພິວເຕີ'),
-(2, 'ບັນຫາລະບົບ');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -102,22 +112,7 @@ CREATE TABLE `tbl_issue_history` (
   `ih_detail` text DEFAULT NULL,
   `update_by` int(11) DEFAULT NULL,
   `update_date` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_issue_history`
---
-
-INSERT INTO `tbl_issue_history` (`ih_id`, `ir_id`, `ir_state`, `ih_detail`, `update_by`, `update_date`) VALUES
-(1, 1, 1, 'ຄອມເປີດບໍ່ຂື້ນ', NULL, NULL),
-(2, 1, 1, 'ຕິດຕາມ', 3, '2023-05-22'),
-(3, 1, 2, 'ຕິດຕາມ 1', 3, '2023-05-22'),
-(4, 1, 2, 'ຕິດຕາມ 2', 3, '2023-05-22'),
-(5, 1, 4, 'ລໍຖ້າອາໄຫຼ່', 3, '2023-05-22'),
-(6, 2, 1, 'ເຂົ້າບໍ່ໄດ້', NULL, NULL),
-(7, 2, 2, 'ກຳລັງແກ້ໄຂ', 4, '2023-05-22'),
-(8, 2, 3, 'ປິດສຳເລັດ', NULL, NULL),
-(9, 1, 3, 'ແກ້ແລ້ວ', 3, '2023-05-22');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -135,15 +130,7 @@ CREATE TABLE `tbl_issue_request` (
   `assign_by` int(11) DEFAULT NULL,
   `assign_date` date DEFAULT NULL,
   `rate_point` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_issue_request`
---
-
-INSERT INTO `tbl_issue_request` (`ir_id`, `ist_id`, `ir_state`, `ir_detail`, `reqeust_by`, `request_date`, `assign_by`, `assign_date`, `rate_point`) VALUES
-(1, 1, 3, 'ຄອມເປີດບໍ່ຂື້ນ', 2, '2023-05-22', 3, '2023-05-22', 5),
-(2, 3, 3, 'ເຂົ້າບໍ່ໄດ້', 2, '2023-05-22', 4, '2023-05-22', 3);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -154,17 +141,7 @@ INSERT INTO `tbl_issue_request` (`ir_id`, `ist_id`, `ir_state`, `ir_detail`, `re
 CREATE TABLE `tbl_issue_status` (
   `is_id` int(11) NOT NULL,
   `is_name` varchar(300) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_issue_status`
---
-
-INSERT INTO `tbl_issue_status` (`is_id`, `is_name`) VALUES
-(1, 'ລໍຖ້າຮັບ'),
-(2, 'ກຳລັງດຳເນີນການ'),
-(3, 'ປິດບັນຫາ'),
-(4, 'ລໍຖ້າແກ້ໄຂ');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -176,17 +153,7 @@ CREATE TABLE `tbl_issue_type` (
   `ist_id` int(11) NOT NULL,
   `isc_id` int(11) DEFAULT NULL,
   `ist_name` varchar(150) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_issue_type`
---
-
-INSERT INTO `tbl_issue_type` (`ist_id`, `isc_id`, `ist_name`) VALUES
-(1, 1, 'ຄອມເປີດບໍ່ໄດ້'),
-(2, 1, 'ບໍມີໂປແກຣມ'),
-(3, 2, 'ໂປຣແກມລາພັກ'),
-(4, 2, 'ໂປຣແກມຂາຍ');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -197,15 +164,7 @@ INSERT INTO `tbl_issue_type` (`ist_id`, `isc_id`, `ist_name`) VALUES
 CREATE TABLE `tbl_item_data` (
   `item_id` int(11) NOT NULL,
   `item_name` varchar(300) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_item_data`
---
-
-INSERT INTO `tbl_item_data` (`item_id`, `item_name`) VALUES
-(1, 'ບິກ'),
-(2, 'ສໍ');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -218,7 +177,7 @@ CREATE TABLE `tbl_page_title` (
   `pt_name` varchar(300) DEFAULT NULL,
   `ptf_name` varchar(100) DEFAULT NULL,
   `st_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_page_title`
@@ -253,16 +212,7 @@ CREATE TABLE `tbl_request_email` (
   `update_by` int(11) DEFAULT NULL,
   `date_update` date DEFAULT NULL,
   `state` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_request_email`
---
-
-INSERT INTO `tbl_request_email` (`re_id`, `user_id`, `user_email`, `pass_email`, `date_request`, `update_by`, `date_update`, `state`) VALUES
-(6, 2, NULL, NULL, '2023-05-22', NULL, NULL, 2),
-(7, 5, NULL, NULL, '2023-05-22', NULL, NULL, NULL),
-(8, 3, NULL, NULL, '2023-05-22', NULL, NULL, NULL);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -273,15 +223,7 @@ INSERT INTO `tbl_request_email` (`re_id`, `user_id`, `user_email`, `pass_email`,
 CREATE TABLE `tbl_request_status` (
   `rs_id` int(11) NOT NULL,
   `rs_name` varchar(150) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_request_status`
---
-
-INSERT INTO `tbl_request_status` (`rs_id`, `rs_name`) VALUES
-(1, 'ລໍຖ້າ'),
-(2, 'ອານຸມັດ');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -291,20 +233,11 @@ INSERT INTO `tbl_request_status` (`rs_id`, `rs_name`) VALUES
 
 CREATE TABLE `tbl_request_use_item` (
   `rui_id` int(11) NOT NULL,
-  `rui_bill_number` varchar(30) DEFAULT NULL,
   `rs_id` int(11) DEFAULT NULL,
   `depart_id` int(11) DEFAULT NULL,
   `request_by` int(11) DEFAULT NULL,
   `reqeust_date` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_request_use_item`
---
-
-INSERT INTO `tbl_request_use_item` (`rui_id`, `rui_bill_number`, `rs_id`, `depart_id`, `request_by`, `reqeust_date`) VALUES
-(1, NULL, 1, 2, 2, '2023-05-22'),
-(2, NULL, 1, 3, 5, '2023-05-22');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -317,17 +250,7 @@ CREATE TABLE `tbl_request_use_item_detail` (
   `rui_id` int(11) DEFAULT NULL,
   `item_id` int(11) DEFAULT NULL,
   `item_value` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_request_use_item_detail`
---
-
-INSERT INTO `tbl_request_use_item_detail` (`riud_id`, `rui_id`, `item_id`, `item_value`) VALUES
-(1, 1, 1, 10),
-(2, 1, 2, 10),
-(3, 2, 1, 2),
-(4, 2, 2, 3);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -339,7 +262,7 @@ CREATE TABLE `tbl_roles` (
   `r_id` int(11) NOT NULL,
   `role_name` varchar(150) DEFAULT NULL,
   `role_level` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_roles`
@@ -359,7 +282,7 @@ INSERT INTO `tbl_roles` (`r_id`, `role_name`, `role_level`) VALUES
 CREATE TABLE `tbl_role_level` (
   `rl_id` int(11) NOT NULL,
   `rl_name` varchar(90) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_role_level`
@@ -384,7 +307,7 @@ CREATE TABLE `tbl_role_page` (
   `ht_id` int(11) DEFAULT NULL,
   `st_id` int(11) DEFAULT NULL,
   `pt_id` int(11) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_role_page`
@@ -430,7 +353,7 @@ CREATE TABLE `tbl_sub_title` (
   `st_name` varchar(300) DEFAULT NULL,
   `icon_code` varchar(100) DEFAULT NULL,
   `ht_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_sub_title`
@@ -459,23 +382,31 @@ CREATE TABLE `tbl_user` (
   `depart_id` int(11) DEFAULT NULL,
   `user_status` int(11) DEFAULT NULL,
   `add_by` int(11) DEFAULT NULL,
-  `date_register` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `date_register` date DEFAULT NULL,
+  `cp_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`usid`, `full_name`, `user_name`, `user_password`, `role_id`, `depart_id`, `user_status`, `add_by`, `date_register`) VALUES
-(1, 'ຊຸບເປິແອັດມີນ', 'superadmin', '123', 1, 1, 1, 1, '2023-05-22'),
-(2, 'ບິນລີ້1', 'Testing', '123', 2, 2, 1, 1, '2023-05-22'),
-(3, 'ບິນລີ້2', 'admin', '123', 3, 1, 1, 1, '2023-05-22'),
-(4, 'ບິນລີ້3', 'admin2', '123', 3, 1, 1, 3, '2023-05-22'),
-(5, 'ບັນຊີ2', 'testing2', '123', 2, 3, 1, 3, '2023-05-22');
+INSERT INTO `tbl_user` (`usid`, `full_name`, `user_name`, `user_password`, `role_id`, `depart_id`, `user_status`, `add_by`, `date_register`, `cp_id`) VALUES
+(1, 'ຊຸບເປິແອັດມີນ', 'superadmin', '123', 1, 1, 1, 1, '2023-05-22', NULL),
+(2, 'ບິນລີ້1', 'Testing', '123', 2, 2, 1, 1, '2023-05-22', NULL),
+(3, 'ບິນລີ້2', 'admin', '123', 3, 1, 1, 1, '2023-05-22', NULL),
+(4, 'ບິນລີ້3', 'admin2', '123', 3, 1, 1, 3, '2023-05-22', NULL),
+(5, 'ບັນຊີ2', 'testing2', '123', 2, 3, 1, 3, '2023-05-22', NULL),
+(6, 'thfgh', 'fcghcf', '123', 1, 9, 1, 1, '2023-05-22', 1);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `tbl_company`
+--
+ALTER TABLE `tbl_company`
+  ADD PRIMARY KEY (`cp_id`);
 
 --
 -- Indexes for table `tbl_depart`
@@ -590,6 +521,12 @@ ALTER TABLE `tbl_user`
 --
 
 --
+-- AUTO_INCREMENT for table `tbl_company`
+--
+ALTER TABLE `tbl_company`
+  MODIFY `cp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `tbl_depart`
 --
 ALTER TABLE `tbl_depart`
@@ -605,37 +542,37 @@ ALTER TABLE `tbl_header_title`
 -- AUTO_INCREMENT for table `tbl_issue_category`
 --
 ALTER TABLE `tbl_issue_category`
-  MODIFY `isc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `isc_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_issue_history`
 --
 ALTER TABLE `tbl_issue_history`
-  MODIFY `ih_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ih_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_issue_request`
 --
 ALTER TABLE `tbl_issue_request`
-  MODIFY `ir_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ir_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_issue_status`
 --
 ALTER TABLE `tbl_issue_status`
-  MODIFY `is_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `is_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_issue_type`
 --
 ALTER TABLE `tbl_issue_type`
-  MODIFY `ist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ist_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_item_data`
 --
 ALTER TABLE `tbl_item_data`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_page_title`
@@ -647,25 +584,25 @@ ALTER TABLE `tbl_page_title`
 -- AUTO_INCREMENT for table `tbl_request_email`
 --
 ALTER TABLE `tbl_request_email`
-  MODIFY `re_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `re_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_request_status`
 --
 ALTER TABLE `tbl_request_status`
-  MODIFY `rs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `rs_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_request_use_item`
 --
 ALTER TABLE `tbl_request_use_item`
-  MODIFY `rui_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `rui_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_request_use_item_detail`
 --
 ALTER TABLE `tbl_request_use_item_detail`
-  MODIFY `riud_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `riud_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_roles`
@@ -695,7 +632,7 @@ ALTER TABLE `tbl_sub_title`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `usid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `usid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
