@@ -3,7 +3,7 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db   = "helpdesk";
+$db   = "ctech_support";
 $conn = null;
 
 try {

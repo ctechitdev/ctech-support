@@ -107,6 +107,26 @@ $header_click = "3";
 												</div>
 											</div>
 											<div class="form-group col-lg-12">
+												<label class="text-dark font-weight-medium">ບໍລິສັດ</label>
+												<div class="form-group">
+
+													<select class=" form-control font" name="cp_id" id="cp_id">
+														<option value=""> ເລືອກບໍລິສັດ </option>
+														<?php
+														$stmt5 = $conn->prepare(" SELECT * FROM tbl_company ");
+														$stmt5->execute();
+														if ($stmt5->rowCount() > 0) {
+															while ($row5 = $stmt5->fetch(PDO::FETCH_ASSOC)) {
+														?>
+																<option value="<?php echo $row5['cp_id']; ?>"> <?php echo $row5['cp_name']; ?></option>
+														<?php
+															}
+														}
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="form-group col-lg-12">
 												<label class="text-dark font-weight-medium">ພະແນກ</label>
 												<div class="form-group">
 
@@ -159,7 +179,7 @@ $header_click = "3";
 										<th>ຊື່ຜູ້ໃຊ້</th>
 										<th>ຢູສເຊີ້</th>
 										<th>ພະແນກ</th>
-
+										<th>ບໍລິສັດ</th>
 										<th>ສະຖານະ</th>
 										<th>ສິດຈັດການ</th>
 										<th></th>
@@ -177,11 +197,12 @@ $header_click = "3";
 									}
 
 
-									$stmt4 = $conn->prepare(" select usid,full_name,user_name,dp_name,role_name,
+									$stmt4 = $conn->prepare(" select usid,full_name,cp_name,user_name,dp_name,role_name,
 									(case when user_status = 1 then 'ເປີດນຳໃຊ້' else 'ປິດນຳໃຊ້' end) as user_status,date_register
 									from tbl_user a
 									LEFT JOIN tbl_depart b on a.depart_id = b.dp_id
 									LEFT join tbl_roles c on a.role_id = c.r_id 
+									left join tbl_company d on a.cp_id = d.cp_id
 									$syntax_user ");
 									$stmt4->execute();
 									if ($stmt4->rowCount() > 0) {
@@ -190,6 +211,7 @@ $header_click = "3";
 											$full_name = $row4['full_name'];
 											$user_name = $row4['user_name'];
 											$dp_name = $row4['dp_name'];
+											$cp_name = $row4['cp_name'];
 											$user_status = $row4['user_status'];
 											$role_name = $row4['role_name'];
 
@@ -202,6 +224,7 @@ $header_click = "3";
 												<td><?php echo "$full_name"; ?></td>
 												<td><?php echo "$user_name"; ?></td>
 												<td><?php echo "$dp_name"; ?></td>
+												<td><?php echo "$cp_name"; ?></td>
 												<td> <span class="badge <?php
 																		if ($user_status == 'ປິດນຳໃຊ້') {
 																			echo "badge-secondary";

@@ -15,8 +15,8 @@ include("../setting/conn.php");
  else
  {
     
-	$insCourse = $conn->query("INSERT INTO tbl_user(full_name,user_name,user_password,user_status,role_id,depart_id,add_by,date_register)
-	VALUES('$full_name','$user_name','123','1','$r_id','$dp_id','$id_users',now()) ");
+	$insCourse = $conn->query("INSERT INTO tbl_user(full_name,cp_id,user_name,user_password,user_status,role_id,depart_id,add_by,date_register)
+	VALUES('$full_name','$cp_id','$user_name','123','1','$r_id','$dp_id','$id_users',now()) ");
 	if($insCourse)
 	{
 		$res = array("res" => "success", "user name" => $user_name);
